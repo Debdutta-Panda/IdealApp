@@ -9,9 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.debduttapanda.idealapp.R
 import com.debduttapanda.idealapp.forward
 import com.debduttapanda.idealapp.viewmodels.AddTaskViewModel
 
@@ -29,7 +31,7 @@ fun AddScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text("Add Task")
+                    Text(stringResource(R.string.add_task))
                 },
                 navigationIcon = {
                     IconButton(
@@ -56,10 +58,10 @@ fun AddScreen(
                                 vm.title.change(it)
                 },
                 label = {
-                    Text("Title")
+                    Text(stringResource(R.string.title))
                 },
                 placeholder = {
-                    Text("Title")
+                    Text(stringResource(R.string.title))
                 }
             )
             Spacer(modifier = Modifier.height(12.dp))
@@ -70,10 +72,10 @@ fun AddScreen(
                     vm.description.change(it)
                 },
                 label = {
-                    Text("Description")
+                    Text(stringResource(R.string.description))
                 },
                 placeholder = {
-                    Text("Description")
+                    Text(stringResource(R.string.description))
                 }
             )
             Spacer(modifier = Modifier.height(12.dp))
@@ -82,7 +84,7 @@ fun AddScreen(
                 onClick = vm.onAddClick,
                 enabled = vm.canAdd.live.value
             ){
-                Text("Add")
+                Text(stringResource(R.string.add))
             }
         }
     }

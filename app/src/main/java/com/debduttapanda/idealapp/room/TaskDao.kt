@@ -1,9 +1,6 @@
 package com.debduttapanda.idealapp.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface TaskDao {
@@ -21,4 +18,10 @@ interface TaskDao {
 
     @Delete
     suspend fun delete(taskEntity: TaskEntity)
+
+    @Update
+    suspend fun updateTask(task: TaskEntity)
+
+    @Query("DELETE FROM TaskEntity")
+    suspend fun deleteAll()
 }

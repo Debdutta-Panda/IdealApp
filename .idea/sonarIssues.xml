@@ -3,6 +3,11 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/Dummy.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-viewmodel-compose/2.5.0-rc01/7a6970be52a10accf604976a4ba7acf5b2459525/lifecycle-viewmodel-compose-2.5.0-rc01-sources.jar!/androidx/lifecycle/viewmodel/compose/ViewModel.kt">
           <value>
             <set />
@@ -168,6 +173,26 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/screen/TaskItemView.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/ui/theme/Color.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/ui/theme/Theme.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/ui/theme/Type.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/viewmodels/AddTaskViewModel.kt">
           <value>
             <set />
@@ -179,6 +204,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/viewmodels/SplashViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/values/themes.xml">
           <value>
             <set />
           </value>
@@ -208,7 +243,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/CheckTaskUseCase.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/DeleteAllTaskUseCase.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/GetAllTaskUseCase.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/UpdateTaskUseCase.kt">
           <value>
             <set />
           </value>
@@ -233,7 +283,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/impl/CheckTaskUseCaseImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/impl/DeleteAllTaskUseCaseImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/impl/DeleteTaskUseCaseImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/impl/GetAllTaskUseCaseImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/impl/UpdateTaskUseCaseImpl.kt">
           <value>
             <set />
           </value>
@@ -244,6 +314,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../ViewModelTest/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../navi/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../navi/app/src/main/java/com/debduttapanda/navi/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../navi/app/src/main/java/com/debduttapanda/navi/myComposable.kt">
           <value>
             <set />
           </value>

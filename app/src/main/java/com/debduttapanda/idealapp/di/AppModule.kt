@@ -3,10 +3,8 @@ package com.debduttapanda.idealapp.di
 import android.content.Context
 import androidx.room.Room
 import com.debduttapanda.core.repository.TaskRepository
-import com.debduttapanda.core.use_cases.AddTaskUseCase
-import com.debduttapanda.core.use_cases.GetAllTaskUseCase
-import com.debduttapanda.core.use_cases.impl.AddTaskUseCaseImpl
-import com.debduttapanda.core.use_cases.impl.GetAllTaskUseCaseImpl
+import com.debduttapanda.core.use_cases.*
+import com.debduttapanda.core.use_cases.impl.*
 import com.debduttapanda.idealapp.repository.TaskRepositoryImpl
 import com.debduttapanda.idealapp.room.AppDatabase
 import com.debduttapanda.idealapp.room.TaskDao
@@ -61,6 +59,24 @@ class ViewModelModule {
     @ViewModelScoped
     fun bindGetAllTaskUseCase(taskRepository: TaskRepository): GetAllTaskUseCase {
         return GetAllTaskUseCaseImpl(taskRepository)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun bindUpdateTaskUseCase(taskRepository: TaskRepository): UpdateTaskUseCase {
+        return UpdateTaskUseCaseImpl(taskRepository)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun bindDeleteTaskUseCase(taskRepository: TaskRepository): DeleteTaskUseCase {
+        return DeleteTaskUseCaseImpl(taskRepository)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun bindDeleteAllTaskUseCase(taskRepository: TaskRepository): DeleteAllTaskUseCase {
+        return DeleteAllTaskUseCaseImpl(taskRepository)
     }
 }
 

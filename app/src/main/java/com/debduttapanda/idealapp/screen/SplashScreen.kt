@@ -9,8 +9,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.debduttapanda.idealapp.R
 import com.debduttapanda.idealapp.Routes
 import com.debduttapanda.idealapp.viewmodels.SplashViewModel
 import com.debduttapanda.idealapp.forward
@@ -29,7 +31,7 @@ fun SplashScreen(
         contentAlignment = Alignment.Center
     ){
         Text(
-            "Splash",
+            stringResource(R.string.splash),
             modifier = Modifier.clickable {
                 navController.navigate(Routes.home)
             }

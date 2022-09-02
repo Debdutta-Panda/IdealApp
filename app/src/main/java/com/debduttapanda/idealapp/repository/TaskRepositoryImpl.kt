@@ -22,4 +22,28 @@ class TaskRepositoryImpl @Inject constructor(
             it.task
         }
     }
+
+    override suspend fun updateTask(task: Task) {
+        taskDao.updateTask(
+            TaskEntity(
+            title = task.title,
+            description = task.description,
+            completed = task.completed,
+            uid = task.uid
+        )
+        )
+    }
+
+    override suspend fun deleteTask(task: Task) {
+        taskDao.delete(TaskEntity(
+            uid = task.uid,
+            title = task.title,
+            description = task.description,
+            completed = task.completed
+        ))
+    }
+
+    override suspend fun deleteAllTask() {
+        taskDao.deleteAll()
+    }
 }

@@ -27,6 +27,9 @@ class AddTaskViewModel @Inject constructor(
                     completed = false,
                 )
             ).collect()
+            navigation.scope{ navHostController, lifecycleOwner, toaster ->
+                navHostController.popBackStack()
+            }
         }
     }
     val description = Value(""){
