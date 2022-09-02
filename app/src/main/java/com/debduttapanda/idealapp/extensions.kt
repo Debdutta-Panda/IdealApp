@@ -9,11 +9,11 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LifecycleOwner
-import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
-import com.debduttapanda.idealapp.screen.HomeScreen
 import com.google.accompanist.navigation.animation.composable
 
 data class Toaster(
@@ -67,4 +67,24 @@ fun NavGraphBuilder.myComposable(
     ){
         content(this)
     }
+}
+
+data class Value<T>(
+    val initialValue: T,
+    val interceptor: (T)->T = {
+        it
+    },
+    val onChange: (T)->Unit = {}
+){
+    private val _data = mutableStateOf(initialValue)
+    val live: State<T> = _data
+    fun change(newValue: T){
+        _data.value = interceptor(newValue)
+        onChange(_data.value)
+    }
+    var value : T
+    set(newValue){
+        change(newValue)
+    }
+    get() = live.value
 }

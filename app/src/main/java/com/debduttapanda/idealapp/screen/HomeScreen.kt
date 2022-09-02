@@ -2,8 +2,10 @@ package com.debduttapanda.idealapp.screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
@@ -27,6 +29,16 @@ fun HomeScreen(
         vm.navigation.forward(navController,owner)
     }
     Box(){
+        LazyColumn(){
+            items(
+                key = {
+                    vm.tasks.live.value[it].uid
+                },
+                count = vm.tasks.live.value.size
+            ){
+                Text(vm.tasks.live.value[it].title)
+            }
+        }
         FloatingActionButton(
             onClick = vm.onAddClick,
             modifier = Modifier

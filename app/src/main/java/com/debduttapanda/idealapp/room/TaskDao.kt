@@ -7,18 +7,18 @@ import androidx.room.Query
 
 @Dao
 interface TaskDao {
-    @Query("SELECT * FROM task")
-    fun getAll(): List<Task>
+    @Query("SELECT * FROM TaskEntity")
+    suspend fun getAll(): List<TaskEntity>
 
-    @Query("SELECT * FROM task WHERE uid IN (:userIds)")
-    fun loadAllByIds(userIds: IntArray): List<Task>
+    @Query("SELECT * FROM TaskEntity WHERE uid IN (:userIds)")
+    suspend fun loadAllByIds(userIds: IntArray): List<TaskEntity>
 
-    @Query("SELECT * FROM task WHERE title LIKE :title")
-    fun findByTitle(title: String): Task
+    @Query("SELECT * FROM TaskEntity WHERE title LIKE :title")
+    suspend fun findByTitle(title: String): TaskEntity
 
     @Insert
-    fun insertAll(vararg tasks: Task)
+    suspend fun insertAll(vararg taskEntities: TaskEntity)
 
     @Delete
-    fun delete(task: Task)
+    suspend fun delete(taskEntity: TaskEntity)
 }

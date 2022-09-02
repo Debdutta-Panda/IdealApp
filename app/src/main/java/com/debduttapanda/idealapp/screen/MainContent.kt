@@ -18,45 +18,21 @@ fun MainContent() {
         navController = navController,
         startDestination = Routes.splash
     ){
-        composable(
-            Routes.splash,
-            enterTransition = null/*{
-            slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
-        }*/,
-            exitTransition = {
-                slideOutOfContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
-            },
-            popEnterTransition = {
-                slideIntoContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(700))
-            },
-            popExitTransition = {
-                slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(700))
-            }
+        myComposable(
+            Routes.splash
         ){
             SplashScreen(navController)
         }
 
-        composable(
+        myComposable(
             Routes.home,
-            enterTransition = null/*{
-            slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
-        }*/,
-            exitTransition = {
-                slideOutOfContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(700))
-            },
-            popEnterTransition = null/*{
-            slideIntoContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(700))
-        }*/,
-            popExitTransition = {
-                slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(700))
-            }
         ){
             HomeScreen(navController)
         }
         myComposable(
             Routes.add
         ) {
-            AddScreen()
+            AddScreen(navController)
         }
     }
 }
