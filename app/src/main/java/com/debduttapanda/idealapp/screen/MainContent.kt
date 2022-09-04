@@ -4,6 +4,8 @@ import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.debduttapanda.idealapp.Routes
 import com.debduttapanda.idealapp.myComposable
 import com.google.accompanist.navigation.animation.AnimatedNavHost
@@ -33,6 +35,17 @@ fun MainContent() {
             Routes.add
         ) {
             AddScreen(navController)
+        }
+        myComposable(
+            "${Routes.edit}/{taskId}",
+            arguments = listOf(
+                navArgument("taskId"){
+                    type = NavType.IntType
+                }
+            )
+        ) {
+            EditScreen(navController,it.arguments
+                ?.getInt("taskId")?:0)
         }
     }
 }

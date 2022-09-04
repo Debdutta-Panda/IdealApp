@@ -12,9 +12,22 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.navigation.NamedNavArgument
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.composable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
 
 data class Toaster(
     private val context: Context
@@ -48,7 +61,8 @@ suspend fun MutableState<UIScope?>.forward(
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.myComposable(
     route: String,
-    content: @Composable (AnimatedVisibilityScope) -> Unit
+    arguments: List<NamedNavArgument> = emptyList(),
+    content: @Composable (NavBackStackEntry) -> Unit
 ){
     composable(
         route,
@@ -63,9 +77,10 @@ fun NavGraphBuilder.myComposable(
         }*/,
         popExitTransition = {
             slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(700))
-        }
-    ){
-        content(this)
+        },
+        arguments = arguments
+    ){bs->
+        content(bs)
     }
 }
 
@@ -87,4 +102,36 @@ data class Value<T>(
         change(newValue)
     }
     get() = live.value
+}
+
+fun <T> ViewModel.flower(flow: Flow<T>, block: (T,()->Unit)->Unit){
+    var job: Job? = null
+    val cancel = {
+        job?.cancel()
+    }
+    job = viewModelScope.launch {
+        flow
+        .onEach {t->
+            block(t,cancel)
+        }
+        .collect()
+    }
+}
+
+fun ViewModel.launchCancelable(
+    context: CoroutineContext = EmptyCoroutineContext,
+    start: CoroutineStart = CoroutineStart.DEFAULT,
+    block: suspend CoroutineScope.(()->Unit) -> Unit
+): Job{
+    var job: Job? = null
+    val cancel = {
+        job?.cancel()
+    }
+    job = viewModelScope.launch(
+        context = context,
+        start = start
+    ) {
+        block(cancel)
+    }
+    return job
 }

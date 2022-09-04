@@ -3,10 +3,12 @@ package com.debduttapanda.idealapp.viewmodels
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.debduttapanda.core.Resource
 import com.debduttapanda.core.models.Task
 import com.debduttapanda.core.use_cases.AddTaskUseCase
 import com.debduttapanda.idealapp.UIScope
 import com.debduttapanda.idealapp.Value
+import com.debduttapanda.idealapp.flower
 import com.debduttapanda.idealapp.scope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -19,17 +21,20 @@ class AddTaskViewModel @Inject constructor(
 ): ViewModel() {
     val canAdd = Value(false)
     val onAddClick: ()->Unit = {
-        viewModelScope.launch/*(Dispatchers.IO)*/ {
-            addTaskUseCase.invoke(
-                Task(
-                    title = title.value,
-                    description = description.value,
-                    completed = false,
-                )
-            ).collect()
+        flower(addTaskUseCase.invoke(
+            Task(
+                title = title.value,
+                description = description.value,
+                completed = false,
+            )
+        )){t,cancel->
             navigation.scope{ navHostController, lifecycleOwner, toaster ->
+                if(t is Resource.Error){
+                    toaster?.toast(t.message?:"")
+                }
                 navHostController.popBackStack()
             }
+            cancel()
         }
     }
     val description = Value(""){

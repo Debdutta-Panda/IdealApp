@@ -18,23 +18,28 @@ import com.debduttapanda.idealapp.R
 import com.debduttapanda.idealapp.Toaster
 import com.debduttapanda.idealapp.forward
 import com.debduttapanda.idealapp.viewmodels.AddTaskViewModel
+import com.debduttapanda.idealapp.viewmodels.EditTaskViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun AddScreen(
+fun EditScreen(
     navController: NavHostController,
-    vm: AddTaskViewModel = hiltViewModel()
+    taskId: Int,
+    vm: EditTaskViewModel = hiltViewModel()
 ){
     val owner = LocalLifecycleOwner.current
     val context = LocalContext.current
     LaunchedEffect(key1 = vm.navigation.value){
         vm.navigation.forward(navController,owner, Toaster(context))
     }
+    LaunchedEffect(key1 = taskId){
+        vm.onTaskIdObtained(taskId)
+    }
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(stringResource(R.string.add_task))
+                    Text(stringResource(R.string.edit_task))
                 },
                 navigationIcon = {
                     IconButton(
@@ -84,10 +89,10 @@ fun AddScreen(
             Spacer(modifier = Modifier.height(12.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = vm.onAddClick,
-                enabled = vm.canAdd.live.value
+                onClick = vm.onUpdateClick,
+                enabled = vm.canUpdate.live.value
             ){
-                Text(stringResource(R.string.add))
+                Text(stringResource(R.string.update))
             }
         }
     }

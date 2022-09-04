@@ -26,12 +26,26 @@ class HomeViewModel @Inject constructor(
     private val deleteTaskUseCase: DeleteTaskUseCase,
     private val deleteAllTaskUseCase: DeleteAllTaskUseCase
 ): ViewModel() {
+    val loading = mutableStateOf(false)
     val onDeleteAllClick: () -> Unit = {
-        viewModelScope.launch {
+        launchCancelable { cancel->
             val result = dialoger.show()
             if(result=="positive"){
-                deleteAllTaskUseCase().collect()
-                fetchTasks()
+                loading.value = true
+                deleteAllTaskUseCase()
+                    .onEach {
+                        if(it is Resource.Error){
+                            navigation.scope { navHostController, lifecycleOwner, toaster ->
+                                toaster?.toast(it.message?:"")
+                            }
+                        }
+                        else{
+                            fetchTasks()
+                        }
+                        loading.value = false
+                        cancel()
+                    }
+                    .collect()
             }
         }
     }
@@ -45,31 +59,59 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun fetchTasks() {
-        viewModelScope.launch {
-            getAllTaskUseCase()
-                .onEach {
-                    if(it is Resource.Success){
-                        tasks.value = it.data?: emptyList()
-                    }
+        loading.value = true
+        flower(getAllTaskUseCase()){t,cancel->
+            if(t is Resource.Success){
+                tasks.value = t.data?: emptyList()
+            }
+            else if(t is Resource.Error){
+                navigation.scope{ navHostController, lifecycleOwner, toaster ->
+                    toaster?.toast(t.message?:"")
                 }
-                .collect()
+            }
+            loading.value = false
+            cancel()
         }
     }
 
     fun onDeleteTaskClick(task: Task) {
-        viewModelScope.launch {
+        launchCancelable {cancel->
             val result = dialoger.show()
             if(result=="positive"){
-                deleteTaskUseCase(task).collect()
-                fetchTasks()
+                loading.value = true
+                deleteTaskUseCase(task)
+                    .onEach {
+                        if(it is Resource.Error){
+                            navigation.scope{ navHostController, lifecycleOwner, toaster ->
+                                toaster?.toast(it.message?:"")
+                            }
+                        }
+                        else{
+                            fetchTasks()
+                        }
+                        loading.value = false
+                        cancel()
+                    }
+                    .collect()
             }
         }
     }
 
+    fun onItemClick(task: Task) {
+        navigation.scope{ navHostController, lifecycleOwner, toaster ->
+            navHostController
+                .navigate("${Routes.edit}/${task.uid}")
+        }
+    }
+
     val onTaskCheckChanged: ((Task,Boolean) -> Unit) = {task,checked->
-        viewModelScope.launch {
-            updateTaskUseCase(task.copy(completed = checked)).collect()
-            fetchTasks()
+        launchCancelable {cancel->
+            updateTaskUseCase(task.copy(completed = checked))
+            .onEach {
+                fetchTasks()
+                cancel()
+            }
+            .collect()
         }
     }
     val tasks = Value<List<Task>>(emptyList())

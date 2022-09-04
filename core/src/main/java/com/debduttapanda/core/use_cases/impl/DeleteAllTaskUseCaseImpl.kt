@@ -1,5 +1,6 @@
 package com.debduttapanda.core.use_cases.impl
 
+import com.debduttapanda.core.Resource
 import com.debduttapanda.core.SimpleResource
 import com.debduttapanda.core.models.Task
 import com.debduttapanda.core.repository.TaskRepository
@@ -14,6 +15,11 @@ class DeleteAllTaskUseCaseImpl @Inject constructor(
     private val taskRepository: TaskRepository
 ) : DeleteAllTaskUseCase {
     override fun invoke(): Flow<SimpleResource> = flow{
-        taskRepository.deleteAllTask()
+        try {
+            taskRepository.deleteAllTask()
+            emit(Resource.Success(Unit))
+        } catch (e: Exception) {
+            emit(Resource.Error(e.message?:""))
+        }
     }
 }

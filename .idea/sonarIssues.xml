@@ -48,6 +48,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/debduttapanda/idealapp/repository/TaskRepositoryImpl_Factory.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/debduttapanda/idealapp/room/AppDatabase_Impl.java">
           <value>
             <set />
@@ -64,6 +69,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/database/Database.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/database/DatabaseImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/database/RoomDatabaseImpl.kt">
           <value>
             <set />
           </value>
@@ -98,6 +118,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/di/ApiModule.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/di/AppModule.kt">
           <value>
             <set />
@@ -109,6 +134,46 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/extensions.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/remote/SimpleResponse.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/remote/TaskApi.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/remote/TasksResponse.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/repository/Local.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/repository/LocalTaskRepositoryImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/repository/LocalTasks.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/repository/LocalTasksImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/repository/RemoteTaskRepositoryImpl.kt">
           <value>
             <set />
           </value>
@@ -158,6 +223,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/screen/EditScreen.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/screen/HomeScreen.kt">
           <value>
             <set />
@@ -194,6 +264,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/viewmodels/AddTaskViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/viewmodels/EditTaskViewModel.kt">
           <value>
             <set />
           </value>
@@ -258,6 +333,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/GetTaskUseCase.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/UpdateTaskUseCase.kt">
           <value>
             <set />
@@ -303,12 +383,37 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/impl/GetTaskUseCaseImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/impl/UpdateTaskUseCaseImpl.kt">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/impl/add_task_use_case.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../PowerNavigation/.idea/sonarIssues.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../PowerNavigation/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../PowerNavigation/app/src/main/java/com/debduttapanda/powernavigation/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../RetrofitTest/app/src/main/java/com/debduttapanda/retrofittest/MainViewModel.kt">
           <value>
             <set />
           </value>

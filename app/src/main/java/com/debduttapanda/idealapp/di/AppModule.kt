@@ -5,7 +5,13 @@ import androidx.room.Room
 import com.debduttapanda.core.repository.TaskRepository
 import com.debduttapanda.core.use_cases.*
 import com.debduttapanda.core.use_cases.impl.*
-import com.debduttapanda.idealapp.repository.TaskRepositoryImpl
+import com.debduttapanda.idealapp.database.Database
+import com.debduttapanda.idealapp.database.RoomDatabaseImpl
+import com.debduttapanda.idealapp.remote.TaskApi
+import com.debduttapanda.idealapp.repository.LocalTasks
+import com.debduttapanda.idealapp.repository.LocalTasksImpl
+import com.debduttapanda.idealapp.repository.LocalTaskRepositoryImpl
+import com.debduttapanda.idealapp.repository.RemoteTaskRepositoryImpl
 import com.debduttapanda.idealapp.room.AppDatabase
 import com.debduttapanda.idealapp.room.TaskDao
 import dagger.Module
@@ -40,8 +46,21 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideTaskRepository(taskDao: TaskDao): TaskRepository {
-        return TaskRepositoryImpl(taskDao)
+    fun provideTaskRepository(localTasks: LocalTasks,taskApi: TaskApi): TaskRepository {
+        //return LocalTaskRepositoryImpl(localTasks)
+        return RemoteTaskRepositoryImpl(taskApi)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocalTasks(database: Database): LocalTasks {
+        return LocalTasksImpl(database)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDatabase(taskDao: TaskDao): Database {
+        return RoomDatabaseImpl(taskDao)
     }
 }
 
@@ -77,6 +96,12 @@ class ViewModelModule {
     @ViewModelScoped
     fun bindDeleteAllTaskUseCase(taskRepository: TaskRepository): DeleteAllTaskUseCase {
         return DeleteAllTaskUseCaseImpl(taskRepository)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun bindGetTaskUseCase(taskRepository: TaskRepository): GetTaskUseCase {
+        return GetTaskUseCaseImpl(taskRepository)
     }
 }
 

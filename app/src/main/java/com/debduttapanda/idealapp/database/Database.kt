@@ -1,27 +1,13 @@
-package com.debduttapanda.idealapp.room
+package com.debduttapanda.idealapp.database
 
-import androidx.room.*
+import com.debduttapanda.idealapp.room.TaskEntity
 
-@Dao
-interface TaskDao {
-    @Query("SELECT * FROM TaskEntity")
+interface Database {
     suspend fun getAll(): List<TaskEntity>
-
-    @Query("SELECT * FROM TaskEntity WHERE uid IN (:taskIds)")
     suspend fun loadAllByIds(taskIds: IntArray): List<TaskEntity>
-
-    @Query("SELECT * FROM TaskEntity WHERE title LIKE :title")
     suspend fun findByTitle(title: String): TaskEntity
-
-    @Insert
     suspend fun insertAll(vararg taskEntities: TaskEntity)
-
-    @Delete
     suspend fun delete(taskEntity: TaskEntity)
-
-    @Update
     suspend fun updateTask(task: TaskEntity)
-
-    @Query("DELETE FROM TaskEntity")
     suspend fun deleteAll()
 }

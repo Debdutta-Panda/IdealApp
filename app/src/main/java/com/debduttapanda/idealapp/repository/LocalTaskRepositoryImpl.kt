@@ -2,15 +2,14 @@ package com.debduttapanda.idealapp.repository
 
 import com.debduttapanda.core.models.Task
 import com.debduttapanda.core.repository.TaskRepository
-import com.debduttapanda.idealapp.room.TaskDao
 import com.debduttapanda.idealapp.room.TaskEntity
 import javax.inject.Inject
 
-class TaskRepositoryImpl @Inject constructor(
-    private val taskDao: TaskDao
+class LocalTaskRepositoryImpl @Inject constructor(
+    private val tasks: LocalTasks
 ):TaskRepository {
     override suspend fun addTask(task: Task) {
-        taskDao.insertAll(TaskEntity(
+        tasks.insertAll(TaskEntity(
             title = task.title,
             description = task.description,
             completed = task.completed
@@ -18,13 +17,13 @@ class TaskRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getAllTasks(): List<Task> {
-        return taskDao.getAll().map {
+        return tasks.getAll().map {
             it.task
         }
     }
 
     override suspend fun updateTask(task: Task) {
-        taskDao.updateTask(
+        tasks.updateTask(
             TaskEntity(
             title = task.title,
             description = task.description,
@@ -35,7 +34,7 @@ class TaskRepositoryImpl @Inject constructor(
     }
 
     override suspend fun deleteTask(task: Task) {
-        taskDao.delete(TaskEntity(
+        tasks.delete(TaskEntity(
             uid = task.uid,
             title = task.title,
             description = task.description,
@@ -44,6 +43,14 @@ class TaskRepositoryImpl @Inject constructor(
     }
 
     override suspend fun deleteAllTask() {
-        taskDao.deleteAll()
+        tasks.deleteAll()
+    }
+
+    override suspend fun getTaskById(id: Int): Task? {
+        val result = tasks.loadAllByIds(intArrayOf(id))
+        if(result.isEmpty()){
+            return null
+        }
+        return result.first().task
     }
 }

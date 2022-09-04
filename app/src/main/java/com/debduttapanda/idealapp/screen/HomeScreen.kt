@@ -2,6 +2,8 @@ package com.debduttapanda.idealapp.screen
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,6 +17,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -25,6 +28,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.debduttapanda.core.models.Task
 import com.debduttapanda.idealapp.R
+import com.debduttapanda.idealapp.Toaster
 import com.debduttapanda.idealapp.forward
 import com.debduttapanda.idealapp.viewmodels.HomeViewModel
 
@@ -35,8 +39,9 @@ fun HomeScreen(
     vm: HomeViewModel = hiltViewModel()
 ) {
     val owner = LocalLifecycleOwner.current
+    val context = LocalContext.current
     LaunchedEffect(key1 = vm.navigation.value){
-        vm.navigation.forward(navController,owner)
+        vm.navigation.forward(navController,owner, Toaster(context))
     }
     LaunchedEffect(key1 = true){
         vm.onStart()
@@ -118,6 +123,17 @@ fun HomeScreen(
                     contentDescription = "Add"
                 )
             }
+        }
+    }
+    if(vm.loading.value){
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable { }
+                .background(Color.White.copy(alpha = 0.1f)),
+            contentAlignment = Alignment.Center
+        ){
+            CircularProgressIndicator()
         }
     }
     if(vm.dialoger.enabled.value){

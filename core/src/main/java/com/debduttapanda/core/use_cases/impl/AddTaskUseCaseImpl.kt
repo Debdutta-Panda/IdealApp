@@ -13,7 +13,11 @@ class AddTaskUseCaseImpl @Inject constructor(
     private val taskRepository: TaskRepository
 ) : AddTaskUseCase {
     override fun invoke(task: Task): Flow<SimpleResource> = flow {
-        taskRepository.addTask(task)
-        emit(Resource.Success(Unit))
+        try {
+            taskRepository.addTask(task)
+            emit(Resource.Success(Unit))
+        } catch (e: Exception) {
+            emit(Resource.Error(e.message?:""))
+        }
     }
 }

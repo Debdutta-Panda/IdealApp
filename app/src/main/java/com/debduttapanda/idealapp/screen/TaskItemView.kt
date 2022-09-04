@@ -1,5 +1,6 @@
 package com.debduttapanda.idealapp.screen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -41,7 +42,12 @@ fun TaskItemView(
                 }
             )
             Column(
-                modifier = Modifier.fillMaxWidth().weight(1f)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .clickable {
+                        vm.onItemClick(task)
+                    }
             ){
                 Text(
                     task.title,
