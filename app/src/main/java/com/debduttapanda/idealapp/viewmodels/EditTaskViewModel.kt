@@ -18,6 +18,7 @@ class EditTaskViewModel @Inject constructor(
     private var getTaskUseCase: GetTaskUseCase,
     private var updateTaskUseCase: UpdateTaskUseCase
 ): ViewModel() {
+    val loading = mutableStateOf(false)
     private var _task: Task? = null
     val canUpdate = Value(false)
     val onUpdateClick: ()->Unit = {
@@ -25,12 +26,14 @@ class EditTaskViewModel @Inject constructor(
     }
 
     private fun update() {
+        loading.value = true
         flower(updateTaskUseCase(getTask())){ t, cancel->
             if(t is Resource.Error){
                 navigation.scope { navHostController, lifecycleOwner, toaster ->
                     toaster?.toast(t.message?:"")
                 }
             }
+            loading.value = false
             goBack()
             cancel()
         }

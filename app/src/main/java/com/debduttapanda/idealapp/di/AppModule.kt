@@ -2,6 +2,9 @@ package com.debduttapanda.idealapp.di
 
 import android.content.Context
 import androidx.room.Room
+import com.debduttapanda.core.BuildConfig
+import com.debduttapanda.core.entity.TaskEntity
+import com.debduttapanda.core.entity.TaskEntityImpl
 import com.debduttapanda.core.repository.TaskRepository
 import com.debduttapanda.core.use_cases.*
 import com.debduttapanda.core.use_cases.impl.*
@@ -47,8 +50,11 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideTaskRepository(localTasks: LocalTasks,taskApi: TaskApi): TaskRepository {
-        //return LocalTaskRepositoryImpl(localTasks)
-        return RemoteTaskRepositoryImpl(taskApi)
+        return if(com.debduttapanda.idealapp.BuildConfig.FLAVOR == "local"){
+            LocalTaskRepositoryImpl(localTasks)
+        } else{
+            RemoteTaskRepositoryImpl(taskApi)
+        }
     }
 
     @Provides
@@ -62,6 +68,12 @@ class DatabaseModule {
     fun provideDatabase(taskDao: TaskDao): Database {
         return RoomDatabaseImpl(taskDao)
     }
+
+    @Provides
+    @Singleton
+    fun provideTaskEntity(taskRepository: TaskRepository): TaskEntity {
+        return TaskEntityImpl(taskRepository)
+    }
 }
 
 @Module
@@ -70,38 +82,38 @@ class ViewModelModule {
 
     @Provides
     @ViewModelScoped
-    fun bindAddTaskUseCase(taskRepository: TaskRepository): AddTaskUseCase {
-        return AddTaskUseCaseImpl(taskRepository)
+    fun bindAddTaskUseCase(taskEntity: TaskEntity): AddTaskUseCase {
+        return AddTaskUseCaseImpl(taskEntity)
     }
 
     @Provides
     @ViewModelScoped
-    fun bindGetAllTaskUseCase(taskRepository: TaskRepository): GetAllTaskUseCase {
-        return GetAllTaskUseCaseImpl(taskRepository)
+    fun bindGetAllTaskUseCase(taskEntity: TaskEntity): GetAllTaskUseCase {
+        return GetAllTaskUseCaseImpl(taskEntity)
     }
 
     @Provides
     @ViewModelScoped
-    fun bindUpdateTaskUseCase(taskRepository: TaskRepository): UpdateTaskUseCase {
-        return UpdateTaskUseCaseImpl(taskRepository)
+    fun bindUpdateTaskUseCase(taskEntity: TaskEntity): UpdateTaskUseCase {
+        return UpdateTaskUseCaseImpl(taskEntity)
     }
 
     @Provides
     @ViewModelScoped
-    fun bindDeleteTaskUseCase(taskRepository: TaskRepository): DeleteTaskUseCase {
-        return DeleteTaskUseCaseImpl(taskRepository)
+    fun bindDeleteTaskUseCase(taskEntity: TaskEntity): DeleteTaskUseCase {
+        return DeleteTaskUseCaseImpl(taskEntity)
     }
 
     @Provides
     @ViewModelScoped
-    fun bindDeleteAllTaskUseCase(taskRepository: TaskRepository): DeleteAllTaskUseCase {
-        return DeleteAllTaskUseCaseImpl(taskRepository)
+    fun bindDeleteAllTaskUseCase(taskEntity: TaskEntity): DeleteAllTaskUseCase {
+        return DeleteAllTaskUseCaseImpl(taskEntity)
     }
 
     @Provides
     @ViewModelScoped
-    fun bindGetTaskUseCase(taskRepository: TaskRepository): GetTaskUseCase {
-        return GetTaskUseCaseImpl(taskRepository)
+    fun bindGetTaskUseCase(taskEntity: TaskEntity): GetTaskUseCase {
+        return GetTaskUseCaseImpl(taskEntity)
     }
 }
 

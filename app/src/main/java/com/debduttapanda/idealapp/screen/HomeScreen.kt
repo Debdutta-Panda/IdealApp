@@ -1,16 +1,13 @@
 package com.debduttapanda.idealapp.screen
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -20,23 +17,25 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.debduttapanda.core.models.Task
 import com.debduttapanda.idealapp.R
 import com.debduttapanda.idealapp.Toaster
 import com.debduttapanda.idealapp.forward
 import com.debduttapanda.idealapp.viewmodels.HomeViewModel
+import com.debduttapanda.idealapp.viewmodels.HomeViewModelImpl
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(
     navController: NavHostController,
-    vm: HomeViewModel = hiltViewModel()
+    vm: HomeViewModel = hiltViewModel<HomeViewModelImpl>()
 ) {
     val owner = LocalLifecycleOwner.current
     val context = LocalContext.current
@@ -94,7 +93,10 @@ fun HomeScreen(
                         stringResource(R.string.no_task_yet),
                         style = TextStyle(
                             color = Color.Gray
-                        )
+                        ),
+                        modifier = Modifier.semantics {
+                            contentDescription = "no_items_yet"
+                        }
                     )
                 }
             }
@@ -108,13 +110,16 @@ fun HomeScreen(
                         },
                         count = vm.tasks.live.value.size
                     ){
-                        TaskItemView(vm.tasks.live.value[it])
+                        TaskItemView(vm.tasks.live.value[it],vm = vm)
                     }
                 }
             }
             FloatingActionButton(
                 onClick = vm.onAddClick,
                 modifier = Modifier
+                    .semantics {
+                        contentDescription = "add_button"
+                    }
                     .align(Alignment.BottomEnd)
                     .padding(24.dp)
             ) {

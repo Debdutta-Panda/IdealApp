@@ -1,5 +1,6 @@
 package com.debduttapanda.idealapp.di
 
+import com.debduttapanda.idealapp.BuildConfig
 import com.debduttapanda.idealapp.remote.TaskApi
 import dagger.Module
 import dagger.Provides
@@ -29,7 +30,7 @@ object ApiModule {
             .addInterceptor(logging)
             .addNetworkInterceptor {chain->
                 val requestBuilder: Request.Builder = chain.request().newBuilder()
-                requestBuilder.header("X-API-KEY", "123")
+                requestBuilder.header("X-API-KEY", BuildConfig.API_KEY)
                 chain.proceed(requestBuilder.build())
             }
             .build()
@@ -39,7 +40,7 @@ object ApiModule {
     @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://apis.debduttapanda.com/idealapp/")
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

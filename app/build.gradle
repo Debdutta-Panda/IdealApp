@@ -28,12 +28,53 @@ android {
                         "room.expandProjection":"true"]
             }
         }
+
+
+    }
+
+    flavorDimensions "data_source"
+    productFlavors {
+        local {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // If you are using only one dimension, this property is optional,
+            // and the plugin automatically assigns all the module's flavors to
+            // that dimension.
+            dimension "data_source"
+            applicationIdSuffix ".local"
+            versionNameSuffix "-local"
+        }
+        remote {
+            dimension "data_source"
+            applicationIdSuffix ".remote"
+            versionNameSuffix "-remote"
+        }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            applicationIdSuffix ".release"
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            minifyEnabled false
+            def properties = new Properties()
+            properties.load(new FileInputStream(rootProject.file("local.properties")))
+
+            buildConfigField("String", "API_KEY", "\"${properties.getProperty("x_api_key")}\"")
+            buildConfigField("String", "BASE_URL", "\"${properties.getProperty("base_url")}\"")
+            buildConfigField("String", "developer", "\"${properties.getProperty("developer")}\"")
+        }
+
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                def properties = new Properties()
+                properties.load(new FileInputStream(rootProject.file("local.properties")))
+                def formattedDate = new Date().format('yyyy_MM_dd_HH_mm_ss_SSS')
+                def developer = properties.getProperty("developer","")
+                outputFileName = "IdealApp-i_${applicationId}-v${defaultConfig.versionName}-${variant.buildType.name}-${formattedDate}-${developer}.apk"
+            }
         }
     }
     compileOptions {
@@ -107,4 +148,22 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3"
+
+
+    // For Robolectric tests.
+    testImplementation 'com.google.dagger:hilt-android-testing:2.42'
+    // ...with Kotlin.
+    kaptTest 'com.google.dagger:hilt-android-compiler:2.42'
+    // ...with Java.
+    testAnnotationProcessor 'com.google.dagger:hilt-android-compiler:2.42'
+
+
+    // For instrumented tests.
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.42'
+    // ...with Kotlin.
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.42'
+    // ...with Java.
+    androidTestAnnotationProcessor 'com.google.dagger:hilt-android-compiler:2.42'
+
+    androidTestImplementation "androidx.navigation:navigation-testing:2.5.1"
 }

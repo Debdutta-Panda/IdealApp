@@ -9,6 +9,8 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -16,14 +18,18 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.debduttapanda.core.models.Task
 import com.debduttapanda.idealapp.viewmodels.HomeViewModel
+import com.debduttapanda.idealapp.viewmodels.HomeViewModelImpl
 
 @Composable
 fun TaskItemView(
     task: Task,
-    vm: HomeViewModel = hiltViewModel()
+    vm: HomeViewModel = hiltViewModel<HomeViewModelImpl>()
 ) {
     Card(
         modifier = Modifier
+            .semantics {
+                contentDescription = "task_item${task.uid}"
+            }
             .fillMaxWidth()
             .padding(12.dp),
         shape = RoundedCornerShape(12.dp),

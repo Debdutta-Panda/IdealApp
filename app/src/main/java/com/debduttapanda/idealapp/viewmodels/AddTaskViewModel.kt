@@ -19,8 +19,10 @@ import javax.inject.Inject
 class AddTaskViewModel @Inject constructor(
     private var addTaskUseCase: AddTaskUseCase
 ): ViewModel() {
+    val loading = mutableStateOf(false)
     val canAdd = Value(false)
     val onAddClick: ()->Unit = {
+        loading.value = true
         flower(addTaskUseCase.invoke(
             Task(
                 title = title.value,
@@ -34,6 +36,7 @@ class AddTaskViewModel @Inject constructor(
                 }
                 navHostController.popBackStack()
             }
+            loading.value = false
             cancel()
         }
     }

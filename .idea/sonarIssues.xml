@@ -28,12 +28,32 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../CoroutineCancellable/app/src/main/java/com/debduttapanda/coroutinecancellable/MainViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../DesignDimension/app/src/main/java/com/debduttapanda/designdimension/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../DesignDimension/app/src/main/java/com/debduttapanda/designdimension/ui/theme/Theme.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../DictionaryYT/app/src/main/AndroidManifest.xml">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../DictionaryYT/app/src/main/java/com/plcoding/dictionary/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../EagleTechAcademyAdmin/app/src/main/java/admin/eagletechacademy/activities/StudentDetailsActivity.kt">
           <value>
             <set />
           </value>
@@ -58,12 +78,42 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/build/generated/source/kapt/remoteDebug/com/debduttapanda/idealapp/viewmodels/HomeViewModel_Factory.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/build/tmp/kapt3/stubs/debug/com/debduttapanda/idealapp/SplashViewModel.java">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/build/tmp/kapt3/stubs/debug/com/debduttapanda/idealapp/room/TaskDao.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/debduttapanda/idealapp/MockHomeViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/debduttapanda/idealapp/screen/MainContentKtTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/debduttapanda/idealapp/screen/MainContentKtTest.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/debduttapanda/idealapp/viewmodels/MockHomeViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/debduttapanda/idealapp/viewmodels/MockHomeViewModelWithTasks.kt">
           <value>
             <set />
           </value>
@@ -278,6 +328,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/viewmodels/HomeViewModelImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/viewmodels/MockHomeViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/debduttapanda/idealapp/viewmodels/SplashViewModel.kt">
           <value>
             <set />
@@ -304,6 +364,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/SimpleResource.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/entity/TaskEntity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/entity/TaskEntityImpl.kt">
           <value>
             <set />
           </value>
@@ -394,6 +464,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/core/src/main/java/com/debduttapanda/core/use_cases/impl/add_task_use_case.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/local.properties">
           <value>
             <set />
           </value>
