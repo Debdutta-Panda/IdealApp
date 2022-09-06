@@ -15,6 +15,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -87,7 +89,11 @@ fun AddScreen(
             )
             Spacer(modifier = Modifier.height(12.dp))
             Button(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .semantics {
+                        contentDescription = "add_final_button"
+                    }
+                    .fillMaxWidth(),
                 onClick = vm.onAddClick,
                 enabled = vm.canAdd.live.value
             ){

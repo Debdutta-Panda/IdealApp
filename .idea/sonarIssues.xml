@@ -8,6 +8,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.activity/activity-compose/1.5.0-rc01/e9bce564b65bcfa2669ff44af6c578a3dea517dc/activity-compose-1.5.0-rc01-sources.jar!/androidx/activity/compose/ComponentActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-viewmodel-compose/2.5.0-rc01/7a6970be52a10accf604976a4ba7acf5b2459525/lifecycle-viewmodel-compose-2.5.0-rc01-sources.jar!/androidx/lifecycle/viewmodel/compose/ViewModel.kt">
           <value>
             <set />
@@ -89,6 +94,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/build/tmp/kapt3/stubs/debug/com/debduttapanda/idealapp/room/TaskDao.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/debduttapanda/idealapp/HiltTest.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/debduttapanda/idealapp/HomeScreenTestWithHilt.kt">
           <value>
             <set />
           </value>
@@ -473,6 +488,21 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../JetpackComposeTestActivity/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JetpackComposeTestActivity/app/src/androidTest/java/com/debduttapanda/jetpackcomposetestactivity/MyComposeTest.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../JetpackComposeTestActivity/app/src/main/java/com/debduttapanda/jetpackcomposetestactivity/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../PowerNavigation/.idea/sonarIssues.xml">
           <value>
             <set />
@@ -494,6 +524,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../ViewModelTest/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../movies-jetpack-compose/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../movies-jetpack-compose/build.gradle">
           <value>
             <set />
           </value>
