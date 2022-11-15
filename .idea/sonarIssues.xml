@@ -33,6 +33,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/Desktop/UnitTestApplication-master/app/src/main/java/com/example/myapplication/Operations.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../CoroutineCancellable/app/src/main/java/com/debduttapanda/coroutinecancellable/MainViewModel.kt">
           <value>
             <set />
@@ -98,6 +103,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/debduttapanda/idealapp/ExampleInstrumentedTest.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/debduttapanda/idealapp/HiltTest.kt">
           <value>
             <set />
@@ -109,6 +119,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/debduttapanda/idealapp/MockHomeViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/debduttapanda/idealapp/database/RoomDatabaseImplTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/androidTest/java/com/debduttapanda/idealapp/database/RoomDatabaseImplTest.kt">
           <value>
             <set />
           </value>
@@ -368,6 +388,56 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/debduttapanda/core/use_cases/impl/GetAllTaskUseCaseImplTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/debduttapanda/core/use_cases/impl/GetAllTaskUseCaseImplTest.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/debduttapanda/idealapp/FakeDeleteAllTaskUseCaseImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/debduttapanda/idealapp/FakeDeleteTaskUseCaseImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/debduttapanda/idealapp/FakeGetAllTaskUseCase.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/debduttapanda/idealapp/FakeGetAllTaskUseCaseImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/debduttapanda/idealapp/FakeUpdateTaskUseCaseImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/debduttapanda/idealapp/HomeViewModelTest.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/debduttapanda/idealapp/UserViewModelTest.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/debduttapanda/idealapp/ViewModelRule.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/build.gradle">
           <value>
             <set />
@@ -519,6 +589,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../RetrofitTest/app/src/main/java/com/debduttapanda/retrofittest/MainViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../ViewModelTest/app/src/main/java/com/debduttapanda/viewmodeltest/viewmodel/UserViewModel.kt">
           <value>
             <set />
           </value>

@@ -8,3 +8,8 @@ import kotlinx.coroutines.flow.Flow
 interface UpdateTaskUseCase {
     operator fun invoke(task: Task): Flow<SimpleResource>
 }
+
+/*
+interface UseCase<T,E>{
+    operator fun invoke(value: T): Flow<E>
+}*/

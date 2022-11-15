@@ -13,6 +13,7 @@ import com.debduttapanda.core.use_cases.UpdateTaskUseCase
 import com.debduttapanda.idealapp.*
 import com.debduttapanda.idealapp.room.TaskDao
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
@@ -75,6 +76,23 @@ class HomeViewModelImpl @Inject constructor(
             loading.value = false
             cancel()
         }
+
+        /*viewModelScope.launch {
+            getAllTaskUseCase()
+                .onEach {
+                    if(it is Resource.Success){
+                        tasks.value = it.data?: emptyList()
+                    }
+                    else if(it is Resource.Error){
+                        navigation.scope{ navHostController, lifecycleOwner, toaster ->
+                            toaster?.toast(it.message?:"")
+                        }
+                    }
+                    loading.value = false
+                    //throw CancellationException()
+                }
+                .collect()
+        }*/
     }
 
     override fun onDeleteTaskClick(task: Task) {
